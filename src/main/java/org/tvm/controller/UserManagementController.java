@@ -89,7 +89,7 @@ public class UserManagementController
             @ApiResponse(code = 403, message = "All required permissions not granted"),
             @ApiResponse(code = 405, message = "Method Not Allowed")})
     @RequestMapping(method = {RequestMethod.PUT}, value = "/users/{id}", produces = "application/json")
-    public ResponseEntity<ResponseWrapper> updateCompany( @ApiParam(value = "User ID") @PathVariable Integer id
+    public ResponseEntity<ResponseWrapper> updateUser( @ApiParam(value = "User ID") @PathVariable Integer id
             , @RequestBody(required = true) UserDTO user )
     {
         return userManagementService.updateUser( id, CriteriaMapper.INSTANCE.mapUser( user ) );

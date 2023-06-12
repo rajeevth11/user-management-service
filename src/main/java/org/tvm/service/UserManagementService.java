@@ -96,7 +96,7 @@ public class UserManagementService
             if( pagedResult.hasContent() )
             {
                 List<User> userList = pagedResult.stream().collect( Collectors.toList() );
-                responseWrapperResponseEntity = new ResponseEntity( new ResponseWrapper<List<UserResponseDTO>>( ResponseWrapper.SUCCESS, "User retrieved successfully.", CriteriaMapper.INSTANCE.mapUserList( userList ) ), HttpStatus.OK );
+                responseWrapperResponseEntity = new ResponseEntity( new ResponseWrapper<List<UserResponseDTO>>( ResponseWrapper.SUCCESS, "User List retrieved successfully.", CriteriaMapper.INSTANCE.mapUserList( userList ) ), HttpStatus.OK );
 
             }
             else
@@ -169,8 +169,4 @@ public class UserManagementService
         }
         return responseWrapperResponseEntity;
     }
-
-
-
-
 }
