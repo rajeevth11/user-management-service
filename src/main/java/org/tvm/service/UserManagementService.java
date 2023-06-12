@@ -43,8 +43,11 @@ public class UserManagementService
             {
                 userResponseEntity = new ResponseEntity( new ResponseWrapper( ResponseWrapper.ERROR, "User already exist with the same user name." ), HttpStatus.BAD_REQUEST );
             }
-            User UserResult = userRepository.save( user );
-            userResponseEntity = new ResponseEntity( new ResponseWrapper( ResponseWrapper.SUCCESS, "User created successfully." ), HttpStatus.CREATED );
+            else
+            {
+                userRepository.save( user );
+                userResponseEntity = new ResponseEntity( new ResponseWrapper( ResponseWrapper.SUCCESS, "User created successfully." ), HttpStatus.CREATED );
+            }
         }
         catch( Exception e )
         {
@@ -87,7 +90,7 @@ public class UserManagementService
      *
      * @return
      */
-    public ResponseEntity<ResponseWrapper<List<UserResponseDTO>>> getUserList(Integer page, Integer size)
+    public ResponseEntity<ResponseWrapper<List<UserResponseDTO>>> getUserList( Integer page, Integer size )
     {
         ResponseEntity<ResponseWrapper<List<UserResponseDTO>>> responseWrapperResponseEntity = null;
         try
@@ -114,7 +117,7 @@ public class UserManagementService
     /**
      * Update User by id.
      *
-     * @param id of type Integer
+     * @param id   of type Integer
      * @param user of type User
      * @return
      */
