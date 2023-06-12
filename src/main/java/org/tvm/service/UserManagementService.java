@@ -95,10 +95,10 @@ public class UserManagementService
         ResponseEntity<ResponseWrapper<List<UserResponseDTO>>> responseWrapperResponseEntity = null;
         try
         {
-            Page<User> pagedResult = userRepository.findAll( PageRequest.of( page, size, Sort.by( Sort.Direction.ASC, "userId" ) ) );
+            Page<User> pagedResult = userRepository.findAll( PageRequest.of( page, size, Sort.by( "userId" ).ascending() ) );
             if( pagedResult.hasContent() )
             {
-                List<User> userList = pagedResult.stream().collect( Collectors.toList() );
+                List<User> userList = pagedResult.getContent();
                 responseWrapperResponseEntity = new ResponseEntity( new ResponseWrapper<List<UserResponseDTO>>( ResponseWrapper.SUCCESS, "User List retrieved successfully.", CriteriaMapper.INSTANCE.mapUserList( userList ) ), HttpStatus.OK );
 
             }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.tvm.domain.ResponseWrapper;
 import org.tvm.domain.UserDTO;
@@ -59,7 +60,7 @@ public class UserManagementController
             @ApiResponse(code = 403, message = "All required permissions not granted"),
             @ApiResponse(code = 405, message = "Method Not Allowed")})
     @RequestMapping(method = {RequestMethod.GET}, value = "/users", produces = "application/json")
-    public ResponseEntity<ResponseWrapper<List<UserResponseDTO>>> getUserList( @RequestAttribute(required = true) Integer page, @RequestAttribute(required = true) Integer size )
+    public ResponseEntity<ResponseWrapper<List<UserResponseDTO>>> getUserList( @ApiParam(value = "Page")@RequestParam Integer page, @ApiParam(value = "Size")@RequestParam Integer size )
     {
         return userManagementService.getUserList( page, size );
     }
