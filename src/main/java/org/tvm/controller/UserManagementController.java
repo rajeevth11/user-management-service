@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,7 @@ import java.util.List;
  * @Author : rajeevth11@gmail.com
  */
 @RestController
+@CrossOrigin(origins ="http://localhost:3000")
 @RequestMapping(value = "user-management-service/api")
 @Api("UserManagementController - REST APIs to manage Users CRUD operations")
 public class UserManagementController
